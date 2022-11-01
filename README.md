@@ -2,16 +2,19 @@
 
 This is a Laravel 7 Web App that has a function of a playlist
 
-App specs:
+# _**App specs:**_
 PHP 7.4.32
+
 Laravel 7.x
+
 MySQL 8
+
 Nginx 1.23.1
 
 
 
 
-How to run the app:
+# _**How to run the app:**_
 - The app already contains the dockerfile and docker-compose file so no addition installation but for docker is required.
 - Download WSL and Docker
 - Go into the directory where the app is located
@@ -21,7 +24,7 @@ How to run the app:
 
 
 
-The app has basic funtionality of a playlist:
+# _**The app has basic funtionality of a playlist:**_
 1. Add songs to the playlist:
 - Input name of the song, artists' names and the embed link to the song
 - The added song will be displayed right in the homepage
