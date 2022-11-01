@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Artist extends Model
 {
     protected $fillable = ['name'];
-    public function Link()
+    public function links()
     {
         return $this->hasMany('App\Link');
     }

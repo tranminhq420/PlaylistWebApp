@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Link;
 use App\Artist;
+use Illuminate\Database\Eloquent\Builder;
 
 class LinkController extends Controller
 {
@@ -45,7 +46,7 @@ class LinkController extends Controller
         $link->save();
         foreach ($singers as $singer) {
             $artist = Artist::firstOrCreate(['name' => $singer]);
-            $link->artist()->attach($artist);
+            $link->artists()->attach($artist);
         }
         return redirect('/')->with('status', 'Link post form data has been inserted!');
     }
@@ -76,6 +77,22 @@ class LinkController extends Controller
             $song->save();
         }
         return redirect('/')->with('status', 'Song updated');
+    }
+
+    /**
+     * Search for a specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+
+    public function searchArtist(Request $request)
+    {
+
+        $songs = Link::whereHas('artists', function (Builder $query) use ($request) {
+            $query->where('name', 'like', '%' . $request->artist . '%');
+        })->get();
+        return view('create')->with('songs', $songs);
     }
 
     /**

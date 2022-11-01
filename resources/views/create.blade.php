@@ -44,18 +44,9 @@
                     <button type="button" class="btn btn-primary" onclick="searchSong()">
                         Search by song name
                     </button>
-                    {{-- <button type="submit" class="btn btn-primary" onclick="searchArtist()">
+                    <button type="button" class="btn btn-primary" onclick="searchArtist()">
                         Search by artist
                     </button>
-                    <button type="submit" class="btn btn-primary" onclick="editSong()">
-                        Edit a song
-                    </button>
-                    <button type="submit" class="btn btn-primary" onclick="deleteSong()">
-                        Delete a song
-                    </button> --}}
-                    {{-- <button type="button" class="btn btn-primary" onclick="window.location='{{ url('all-song') }}'">
-                        Show all songs
-                    </button> --}}
                 </form>
             </div>
         </div>
@@ -67,7 +58,7 @@
             <iframe style="border-radius:12px" src="{{ $song->link }}" height="152" width="300" frameBorder="0"
                 allowtransparency="true" allow="encrypted-media; picture-in-picture" loading="lazy"></iframe>
             {{ $song->name }} -
-            @foreach ($song->Artist as $item)
+            @foreach ($song->artists as $item)
                 {{ $item->name }}
                 @if ($loop->last)
                 @else
@@ -135,6 +126,11 @@
 
         function saveSong() {
             form.action = "{{ url('store-form') }}";
+            form.submit();
+        }
+
+        function searchArtist() {
+            form.action = "{{ url('search-artist') }}";
             form.submit();
         }
 

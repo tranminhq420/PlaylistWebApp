@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Link extends Model
 {
     // use Searchable;
-    public function Artist()
+    public function artists()
     {
         return $this->belongsToMany('App\Artist');
     }
